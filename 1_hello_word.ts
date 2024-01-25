@@ -287,7 +287,7 @@ id.length
 //赋值number类型后，可以使用number相关的方法等
 id = 456
 id.toFixed(1)
-//。。。。。。
+//。。。。
 id = {key:"789"}
 
 
