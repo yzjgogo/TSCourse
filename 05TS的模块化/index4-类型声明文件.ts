@@ -20,6 +20,8 @@ xxx.d.ts 就是类型声明文件或者类型定义文件，一般我们只在�
 
 
 比如这里的IDefPerson 和 IDefType 来自于utils/deftype.d.ts里，但是我们并没有导入，这里就可以引用 （我看到老师视频里偶尔没有引用到了，遇到时注意一下，研究下为啥）
+
+类型声明文件里的所有类型不需要export导出，全局就能访问
 */
 
 let defPerson:IDefPerson= {

@@ -66,7 +66,7 @@ import React from "react"//在安装@types/react之前会报错
   1：定义xxx.d.ts类型声明文件，这里是why.d.ts文件
   2：在xxx.d.ts内部:
   declare module "lodash" 只需这一句'import _ from "lodash"'已经不会报错
-  //下面的大括号用于导出对应module中你要使用的方法、属性等等，因为这里用到了join()所以我把join导出,对应原位置：06TS运行到浏览器_webpack\node_modules\lodash\join.js
+  //下面的大括号用于导出对应module中你要使用的方法、属性等等，因为这里用到了join()所以我把join导出,对应原位置（不确定是不是这个）：06TS运行到浏览器_webpack\node_modules\lodash\join.js
   {
       export function join(...args: any[]): any
   }
@@ -81,4 +81,69 @@ console.log(_.join(["abc", "cba"]))
 
 
 
+/*
+  自己写的js代码声明举例1
+  1：在index.html中的script标签中写一些js代码，有一些属性、函数、构造函数等
+  2：在why.d.ts中进行变量声明、函数生命、类的声明
+  3：这里再使用就不会报错了
+*/
+console.log(whyName, whyAge, whyHeight)
+console.log(foo("why"))
+const p = new Person("kobe", 30)
+console.log(p.name, p.age)
 
+/*
+  自己写的js代码声明举例2：声明一个.js文件
+  1：在任意位置比如utils下新建myyzj.js文件
+  2：在myyzj.js文件中把需要导出的东西导出：
+  export {yzjName,yzjAge,yzjHeight,yzjfoo,YzjPerson}
+  3：创建同名的myyzj.d.ts，声明好后导出也要导出：
+  export{yzjName,yzjAge,yzjHeight,yzjfoo,YzjPerson}
+  4：在使用处例如这里，再import即可使用
+
+  这是我从网上找到的方法，有没有别的方法
+*/
+import {yzjName,yzjAge,yzjHeight,yzjfoo,YzjPerson} from "./utils/myyzj"
+console.log(yzjName, yzjAge, yzjHeight)
+console.log(yzjfoo("why"))
+const y = new YzjPerson("kobe==", 30)
+console.log(y.name, y.age)
+
+
+/*
+    图片等文件的使用
+    1：在指定目录放入图片，这里在src/img/下
+    2：在why.d.ts中生命文件类型
+    declare module "*.png"
+declare module "*.jpg"
+declare module "*.jpeg"
+declare module "*.svg"
+  3：webpack要识别图片可能还需要在webpack.config.js中配置loader
+        {
+          test: /\.(png|jpe?g|svg|gif)$/,
+          type: "asset/resource"
+        }
+   4：在这里使用
+*/ 
+import KobeImage from "./img/kobe02.png"
+const imgEl = document.createElement("img")
+imgEl.src = KobeImage
+document.body.append(imgEl)
+
+
+/*
+        引入jquery
+        1:在index.html中的script标签中，通过cdn的方式引入jquery
+        2:why.d.ts中声明
+        declare namespace $ {
+  export function ajax(settings: any): any
+}
+        3：这里使用
+*/
+
+$.ajax({
+  url: "http://codercba.com:8000/home/multidata",
+  success: function(res: any) {
+    console.log(res)
+  }
+})
