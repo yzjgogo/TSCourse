@@ -10,5 +10,14 @@ const bar: any = (arg: number): number => {
 console.log(bar(10))
 console.log(typeof bar)//function
 
+//函数类型的顶级类型： (...args: any) => any
+//AnyFunction extends (...args: any) => any
+type MyFun = (...args: any) => any
+const my1:MyFun = function(){}
+const my2:MyFun = function(n:number){}
+const my3:MyFun = function(n:number){return ""}
+function my4<T extends (...args: any) => any>(p:T){
+  //anything
+}
 
 export {}

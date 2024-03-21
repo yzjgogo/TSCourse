@@ -27,4 +27,15 @@ function handleLianhe(params: string|number|boolean){
    }
 }
 
+
+/**
+ 
+   keyof any
+   鼠标放到TopUnion上，可见其就是  string | number | symbol 这个联合类型
+
+   
+*/
+
+type TopUnion = keyof any
+
 export { }

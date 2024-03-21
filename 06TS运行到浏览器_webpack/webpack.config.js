@@ -25,13 +25,23 @@
   可以尝试使用link命令。这会创建一个符号链接，指向全局安装的TypeScript，使其在项目中可用：
   'npm link typescript'
 
+  7：tsconfig.json
+  https://www.typescriptlang.org/tsconfig
+
+  8:待学jsx
+
+  9：
+  axios的封装：
+  https://juejin.cn/post/7071518211392405541
+
 */
 
 const path = require('path')
 const HtmlWeabpckPlugin = require("html-webpack-plugin")
 
 module.exports = {
-    mode: "development",
+    // mode: "development",
+    mode: "production",
     entry: './src/index.ts',
     output:{
         path: path.resolve(__dirname,'./dist'),
