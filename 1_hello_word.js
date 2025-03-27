@@ -8,6 +8,10 @@
 
  2，为了能将ts转为js我们需要给电脑搭建编译环境，即用npm安装typescript，命令：npm install typescript -g 。这是全局安装ts的命令，我们可以在cmd、git bash、vscode terminal等任意中断执行此命令安装ts。安装完成后可以用tsc --version命令查看安装的ts版本，我们也可以在安装ts时指定版本，例如npm install typescript@4.8.4 -g。 tsc其实就是指 ts compailer，即ts编译器。以后将ts编译为js也是用tsc命令，例如 tsc aa.ts会得到aa.js
   注意，想要在vscode的terminal中安装ts和使用tsc命令需要以管理员身份运行切搭配几个命令使用，教程参考：vscode的终端的用法.pdf，否则会报错，报错信息参考图片：vscode终端报错.png。
+  教程中涉及到的命令如下：
+  get-ExecutionPolicy
+  set-ExecutionPolicy RemoteSigned
+  get-ExecutionPolicy
 
   3，你要安装的ts的版本需要与你电脑安装的node版本相匹配，比如我的node版本是v12.22.11，我执行'npm install typescript -g'因为默认这个命令是安装最新版的ts，我记得当时是5.x.x记不清了，安装完留意看会提示一些版本和node版本不匹配的错误，因此，我执行了'npm install typescript@4.8.4 -g'指定了和codewhy视频里一样的4.8.4版本。如果报错我们可以先执行'npm uninstall -g typescript'卸载掉在重新安装。
 
